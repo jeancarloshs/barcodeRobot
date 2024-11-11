@@ -6,7 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import json
 
-categoria = "lanches-e-doces"
+categoria = "bebidas"
+categoriaObjResult = categoria.replace("-", " ")
+categoriaObjResult = categoriaObjResult.title()
+# categoriaObjResult = categoriaObjResult.replace("E", "e")
 targetUrl = f"https://cosmos.bluesoft.com.br/categorias/{categoria}/produtos"
 urlComosBlueSoft = targetUrl + "?page=1"
 
@@ -47,6 +50,7 @@ while True:
                 obj_result = {
                     'title': title,
                     'image': img_url,
+                    'categoria': categoriaObjResult,
                     'ncm': ncm,
                     'gtin': gtin,
                 }
